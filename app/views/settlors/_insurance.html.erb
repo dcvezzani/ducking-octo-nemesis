@@ -1,0 +1,99 @@
+<style type="text/css">
+  .questions th.notes{
+    width: 300px;
+  }
+
+  .questions td textarea.notes{
+    width: 280px;
+    height: 5em;
+  }
+</style>
+
+<div class="page-header">
+<h1>Insurance <small>check all that apply & provide details if applicable</small></h1>
+</div>
+
+<div class="row">
+
+<% question_half_count = ((questions.length / 2).floor + 1) %>
+
+<div class="span6">
+<table class="questions table table-striped table-bordered">
+  <tr>
+    <th>Question</th>
+    <th>Settlor</th>
+    <th>Spouse</th>
+    <th>Joint</th>
+  </tr>
+
+<% questions.slice(0, question_half_count).each do |question| %>
+  <tr>
+    <td><%= question.phrase %></td>
+    <td><%= check_box "spouse_1_question_#{question.id}", "spouse_1_question_#{question.id}" %></td>
+    <td><%= check_box "spouse_2_question_#{question.id}", "spouse_2_question_#{question.id}" %></td>
+    <td><%= check_box "spouse_joint_question_#{question.id}", "spouse_joint_question_#{question.id}" %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<div class="span6">
+<table class="questions table table-striped table-bordered">
+  <tr>
+    <th>Question</th>
+    <th>Settlor</th>
+    <th>Spouse</th>
+    <th>Joint</th>
+  </tr>
+
+<% questions.slice(question_half_count, questions.length).each do |question| %>
+  <tr>
+    <td><%= question.phrase %></td>
+    <td><%= check_box "spouse_1_question_#{question.id}", "spouse_1_question_#{question.id}" %></td>
+    <td><%= check_box "spouse_2_question_#{question.id}", "spouse_2_question_#{question.id}" %></td>
+    <td><%= check_box "spouse_joint_question_#{question.id}", "spouse_joint_question_#{question.id}" %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+</div>
+
+
+<div class="row">
+<div class="span12">
+<p>Please provide details of an insurance cash value &amp; death benefits from current policies:</p>
+<%= text_area :asdf, :asdf, placeholder: "Current policy details", style: "width: 80%; height: 10em; " %>
+</div>
+</div>
+
+
+<br />
+
+<%#= link_to 'New Question', new_question_path %>
+
+<script type="text/javascript">
+  function toggle_notes(checkbox){
+    if(arguments.length > 0){
+      if($(checkbox).closest("tr").find("input[type='checkbox']:checked").length > 0){
+        $(checkbox).closest("tr").find("textarea").show();
+      } else {
+        $(checkbox).closest("tr").find("textarea").hide();
+      }
+    } else {
+      $(".questions tr").each(function(i, line){
+        if($(line).find("input[type='checkbox']:checked").length > 0){
+          $(line).find("textarea").show();
+        } else {
+          $(line).find("textarea").hide();
+        }
+      });
+    }
+  }
+
+  $(document).ready(function(){
+    $(".questions input[type='checkbox']").click(function(){
+      toggle_notes(this);
+    });
+  });
+</script>

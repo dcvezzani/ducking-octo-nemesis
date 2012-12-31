@@ -1,0 +1,223 @@
+<div class="page-header">
+<h1>Client info <small></small></h1>
+</div>
+
+<div class="content">
+  <div class="row">
+
+    <div class="span6">
+    <div class="well">
+      <%= render partial: 'form_basic_name', object: settlor, as: :settlor %>
+    </div>
+    </div>
+
+    <div class="span6">
+    <div class="well well-outline">
+      <%= render partial: 'form_basic_aliases', object: settlor, as: :settlor, locals: {aliases: settlor.aliases} %>
+    </div>
+    </div>
+
+    <div class="span6">
+    <div class="well">
+      <%= render partial: 'form_basic_contact', object: settlor, as: :settlor %>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    var currentYear = new Date().getFullYear();
+
+    $( "#settlor_born_at" ).datepicker({
+      yearRange: String(currentYear-150)+":"+String(currentYear),
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $datepicker_cnt = 0;
+  function setup_calendar(row){
+    var currentYear = new Date().getFullYear();
+    var checkbox = $( ".edit-control-date input[type='text']", row );
+
+    setTimeout(function(){
+    console.log("setting up cal for: " + $(row).attr("class"));
+    console.log("setting up cal for: " + $(checkbox).attr("name"));
+    $(checkbox).datepicker({
+      yearRange: String(currentYear-150)+":"+String(currentYear),
+      changeMonth: true,
+      changeYear: true
+      }, 50);
+    });
+  }
+
+  function register_alias_events(scope){
+    //console.log("using scope: " + $(scope).html());
+    scope = ((arguments.length > 0) ? scope : document);
+
+    if(arguments.length > 0){
+      // console.log("scope: " + scope);
+      // console.log("scope: " + $(scope).html());
+      setup_calendar(scope);
+    }
+
+    $(".btn-edit, .btn-save, .btn-cancel", scope).click(function(){
+    console.log(".1.");
+      var row = $(this).closest("tr");
+
+      if(!$(row).hasClass("edit-mode")){
+        $(row).find(".record-value").hide();
+        $(row).find(".btn-group-default").hide();
+        $(row).find(".edit-control").show();
+        $(row).find(".btn-group-edit").show();
+        $(row).addClass("edit-mode");
+        setup_calendar(row);
+
+      } else {
+        $(row).find(".record-value").show();
+        $(row).find(".btn-group-default").show();
+        $(row).find(".btn-group-edit-alt").hide();
+        $(row).find(".edit-control").hide();
+        $(row).find(".btn-group-edit").hide();
+        $(row).removeClass("edit-mode");
+        $(".date .edit-control input[type='text']", row).datepicker("destroy");
+      }
+      return false;
+    });
+
+    $(".btn-save", scope).click(function(){
+    console.log(".2.");
+      var row = $(this).closest("tr");
+      var updated_alias_value = $(row).find(".edit-control input").val();
+      $(row).find(".record-value").text(updated_alias_value);
+    });
+
+    $(".btn-cancel", scope).click(function(){
+      var row = $(this).closest("tr");
+      $(row).find(".edit-control input").val($(row).find(".record-value").text());
+    });
+
+    $(".btn-delete", scope).click(function(){
+      var row = $(this).closest("tr");
+      $(row).hide();
+      return false;
+    });
+  }
+
+  function update_spouse_mailing_address_status(label){
+    var section_group = $(label).closest(".section-group"); 
+    var dependencies = $("#residential_spouse_use_for_mailing_address, #mailing_spouse_use_settlor_mailing_address");
+    for(var i=0; i<dependencies.length; i++){
+      if($(dependencies).is(":checked")){
+        if($(".spouse-mailing-address-fields").is(":visible")){
+          $(section_group).find(".address-fields").slideUp();
+          return true;
+        }
+        return false;
+      }
+    }
+    $(section_group).find(".address-fields").slideDown();
+    
+  }
+
+  $(document).ready(function(){
+    $(".btn-delete").unbind("click"); // disable Rails ajax handling for delete buttons
+
+    // $(".address-logic").click(function(){
+    //   var section_group = $(this).closest(".section-group"); 
+
+    //   if($(this).closest(".control-group").find("input[type='checkbox']").is(":checked")){
+    //     $(section_group).find(".address-fields").slideUp();
+
+    //   } else {
+    //     var dependency = $(this).attr("dependency");
+    //     console.log("dependency: " + dependency);
+    //     var all_unchecked = true;
+    //     if(typeof(dependency) != "undefined"){
+    //       var checkbox_selector = $(dependency, section_group).text();
+    //       console.log("checkbox_selector: " + checkbox_selector);
+    //       $(checkbox_selector, document).each(function(i, item){
+    //         console.log("checking...: " + $(item).is(":not(:checked)"));
+    //         all_unchecked = (all_unchecked && $(item).is(":not(:checked)"));
+    //       });
+    //     }
+
+    //     console.log("all_unchecked: " + all_unchecked);
+    //     if(all_unchecked){
+    //       $(section_group).find(".address-fields").slideDown();
+    //     }
+    //   }
+    // });
+
+    $(".address-logic").click(function(){
+      var section_group = $(this).closest(".section-group"); 
+
+      if($(this).closest(".control-group").find("input[type='checkbox']").is(":checked")){
+        $(section_group).find(".address-fields").slideUp();
+
+      } else {
+        $(section_group).find(".address-fields").slideDown();
+      }
+    });
+
+    $("#residential_spouse_use_for_mailing_address, #mailing_spouse_use_settlor_mailing_address").click(function(){
+      update_spouse_mailing_address_status(this);
+    });
+
+    $(".btn-add-alias").click(function(){
+      var table = $("table.aliases");
+      var template = $(".template-new-alias").html().replace(/xxx/g, ["new", ($datepicker_cnt+=1)].join("_"));
+      $(table).append(template);
+
+      setTimeout(function(){
+        var newRow = $(table).find("tr").last();
+        register_alias_events(newRow);
+      }, 50);
+      return false; 
+    });
+
+    $(".btn-add-spouse-alias").click(function(){
+      var table = $("table.spouse-aliases");
+      var template = $(".template-new-spouse-alias").html().replace(/xxx/g, ["new", ($datepicker_cnt+=1)].join("_"));
+      $(table).append(template);
+
+      setTimeout(function(){
+        var newRow = $(table).find("tr").last();
+        register_alias_events(newRow);
+      }, 100);
+      return false; 
+    });
+
+    $(".btn-add-child").click(function(){
+      var table = $("table.children tbody");
+      var template = $(".template-new-child tbody").html().replace(/xxx/g, ["new", ($datepicker_cnt+=1)].join("_"));
+      $(table).append(template);
+
+      setTimeout(function(){
+        var newRow = $(table).find("tr").last();
+        register_alias_events(newRow);
+      }, 50);
+      return false; 
+    });
+
+    $(".btn-add-spouse-child").click(function(){
+      var table = $("table.spouse-children");
+      var template = $(".template-new-spouse-child").html().replace(/xxx/g, ["new", ($datepicker_cnt+=1)].join("_"));
+      $(table).append(template);
+
+      setTimeout(function(){
+        var newRow = $(table).find("tr").last();
+        register_alias_events(newRow);
+      }, 50);
+      return false; 
+    });
+
+
+    register_alias_events();
+  });
+</script>
+

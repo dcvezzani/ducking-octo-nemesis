@@ -1,0 +1,59 @@
+<div class="page-header">
+<h1>Estimated Net Worth <small></small></h1>
+</div>
+
+<%= form_for(settlor, html: {class: "form-inline"}) do |f| %>
+  <% if settlor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(child.errors.count, "error") %> prohibited this settlor from being saved:</h2>
+
+      <ul>
+      <% settlor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <p class="control-label">What is your estimated net worth?</p>
+
+    <div class="container">
+    <div class="row">
+    <div class="span2">
+      <%= f.label :estimated_net_worth_tier_1, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :estimated_net_worth, :tier_1 %>
+        &lt; $100,000
+      <% end %>
+    </div>
+    <div class="span2">
+      <%= f.label :estimated_net_worth_tier_2, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :estimated_net_worth, :tier_2 %>
+        $100k-$500k 
+      <% end %>
+    </div>
+    <div class="span2">
+      <%= f.label :estimated_net_worth_tier_3, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :estimated_net_worth, :tier_3 %>
+        $500k-$1 million 
+      <% end %>
+    </div>
+    <div class="span2">
+      <%= f.label :estimated_net_worth_tier_4, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :estimated_net_worth, :tier_4 %>
+         $1-5 million 
+      <% end %>
+    </div>
+    <div class="span2">
+      <%= f.label :estimated_net_worth_tier_5, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :estimated_net_worth, :tier_5 %>
+         $5 million +
+      <% end %>
+    </div>
+    </div>
+    </div>
+  
+  <div class="control-group">
+    <%#= f.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>
+

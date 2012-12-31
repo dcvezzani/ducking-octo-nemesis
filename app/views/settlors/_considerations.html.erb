@@ -1,0 +1,60 @@
+<style type="text/css">
+  .questions th.notes{
+    width: 300px;
+  }
+
+  .questions td textarea.notes{
+    width: 280px;
+    height: 5em;
+  }
+</style>
+
+<div class="page-header">
+<h1>Considerations <small>check all that apply & provide details if applicable</small></h1>
+</div>
+
+<table class="questions table table-striped table-bordered">
+  <tr>
+    <th>Question</th>
+    <th>Settlor</th>
+    <th>Spouse</th>
+    <th class="notes">If yes, please elaborate</th>
+  </tr>
+
+<% questions.each do |question| %>
+  <tr>
+    <td><%= question.phrase %></td>
+    <td class="checkbox-lz"><%= check_box "spouse_1_question_#{question.id}", "spouse_1_question_#{question.id}" %></td>
+    <td class="checkbox-lz"><%= check_box "spouse_2_question_#{question.id}", "spouse_2_question_#{question.id}" %></td>
+    <td><%= text_area "notes_question_#{question.id}", "notes_question_#{question.id}", style: "display: none; ", class: "notes", placeholder: "Provide some details" %></td>
+  </tr>
+<% end %>
+</table>
+
+<%#= link_to 'New Question', new_question_path %>
+
+<script type="text/javascript">
+  function toggle_notes(checkbox){
+    if(arguments.length > 0){
+      if($(checkbox).closest("tr").find("input[type='checkbox']:checked").length > 0){
+        $(checkbox).closest("tr").find("textarea").show();
+      } else {
+        $(checkbox).closest("tr").find("textarea").hide();
+      }
+    } else {
+      $(".questions tr").each(function(i, line){
+        if($(line).find("input[type='checkbox']:checked").length > 0){
+          $(line).find("textarea").show();
+        } else {
+          $(line).find("textarea").hide();
+        }
+      });
+    }
+  }
+
+  $(document).ready(function(){
+    $(".questions input[type='checkbox']").click(function(){
+      toggle_notes(this);
+    });
+  });
+</script>

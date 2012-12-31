@@ -1,0 +1,2 @@
+class Alias < SimpleValue
+end

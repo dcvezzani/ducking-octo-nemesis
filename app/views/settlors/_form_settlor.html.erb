@@ -1,0 +1,28 @@
+  <tr>
+    <td><%= settlor.full_legal_name %></td>
+    <td><%= settlor.born_at %></td>
+    <td><%= settlor.us_citizen %></td>
+    <td><%= settlor.marital_status %></td>
+
+  <td>
+  <div class="control-group">
+    <!-- <a class="action pull-right" title="Add child"><i class="icon-plus"></i></a> -->
+    <div class="btn-group pull-right">
+      <%= link_to settlor, class:"btn" do %>
+        <i class="icon-search"></i> Show
+      <% end %>
+      <%= link_to edit_settlor_path(settlor), class:"btn" do %>
+        <i class="icon-pencil"></i> Edit
+      <% end %>
+      <%= link_to settlor, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" do %>
+        <i class="icon-trash"></i> Destroy
+      <% end %>
+    </div>
+  </div>
+  </td>
+    
+    <!-- <td><= link_to 'Show', settlor ></td> -->
+    <!-- <td><= link_to 'Edit', edit_settlor_path(settlor) ></td> -->
+    <!-- <td><= link_to 'Destroy', settlor, method: :delete, data: { confirm: 'Are you sure?' } ></td> -->
+  </tr>
+

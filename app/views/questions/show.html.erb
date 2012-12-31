@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Phrase:</b>
+  <%= @question.phrase %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @question.category_id %>
+</p>
+
+<p>
+  <b>Order position:</b>
+  <%= @question.order_position %>
+</p>
+
+<p>
+  <b>Notes required for response:</b>
+  <%= @question.notes_required_for_response %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

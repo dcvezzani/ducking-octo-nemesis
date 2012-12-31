@@ -1,0 +1,2 @@
+class Child < Dependent
+end

@@ -1,0 +1,362 @@
+    <div id="rootwizard">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul>
+              <li class="wiz-item wiz-settlor">
+                <%= link_to "Settlor", "#tab1", "data-toggle" => "tab" %>
+                <%= link_to "Settlor", basic_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-spouse">
+                <%= link_to "Spouse", "#tab2", "data-toggle" => "tab" %>
+                <%= link_to "Spouse", spouse_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-settlor-children">
+                <%= link_to "Settlor Children", "#tab3", "data-toggle" => "tab" %>
+                <%= link_to "Settlor Children", settlor_children_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-spouse-children">
+                <%= link_to "Spouse Children", "#tab3-1", "data-toggle" => "tab" %>
+                <%= link_to "Spouse Children", spouse_children_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-considerations">
+                <%= link_to "Considerations", "#tab4", "data-toggle" => "tab" %>
+                <%= link_to "Considerations", considerations_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-assets">
+                <%= link_to "Assets", "#tab5", "data-toggle" => "tab" %>
+                <%= link_to "Assets", assets_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-liabilities">
+                <%= link_to "Liabilities", "#tab6", "data-toggle" => "tab" %>
+                <%= link_to "Liabilities", liabilities_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-insurance">
+                <%= link_to "Insurance", "#tab7", "data-toggle" => "tab" %>
+                <%= link_to "Insurance", insurance_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+              <li class="wiz-item wiz-net-worth">
+                <%= link_to "Net Worth", "#tab8", "data-toggle" => "tab" %>
+                <%= link_to "Net Worth", net_worth_settlor_path(settlor), class: "remote-source", style: "display: none; "%>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- div id="bar" class="progress progress-striped active" -->
+        <div id="bar" class="progress progress active">
+          <div class="bar"></div>
+        </div>
+
+        <div class="tab-content">
+          <ul class="pager wizard">
+            <li class="group pull-left" >
+              <ul>
+              <li class="first"><a href="#">First</a></li>
+              <li class="previous"><a href="#">Previous</a></li>
+              </ul>
+            </li>
+
+            <li class="group pull-right" >
+              <ul>
+              <li class="next"><a href="#">Next</a></li>
+              <li class="last"><a href="#">Last</a></li>
+              <li class="finish save" ><a href="#">Save</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="tab-pane" id="tab1">
+            <%= render partial: 'basic', object: settlor, as: :settlor, locals: {aliases: aliases} %>
+          </div>
+
+          <div class="tab-pane" id="tab2">
+          <!-- <p> -->
+          <!-- <input type='text' name='name' id='name' placeholder='Enter Your Name'> -->
+          <!-- </p> -->
+            <%= render partial: 'settlors/spouse', object: spouse, as: :spouse, locals: {aliases: aliases} %>
+          </div>
+
+          <div class="tab-pane" id="tab3">
+            <%= render partial: 'settlor_children', object: child, as: :child %>
+          </div>
+
+          <div class="tab-pane" id="tab3-1">
+            <%= render partial: 'settlors/spouse_children', object: child, as: :spouse_child %>
+          </div>
+
+          <div class="tab-pane" id="tab4">
+            <%= render partial: 'considerations', object: considerations, as: :questions %>
+          </div>
+
+          <!-- <div class="tab-pane" id="tab4"> -->
+          <!--   <div class="row sample-section"> -->
+          <!--     <div class="span4" style=""> -->
+          <!--       <h1>One</h1> -->
+          <!--       <div class="well">1</div> -->
+          <!--     </div> -->
+          <!--     <div class="span4" style=""> -->
+          <!--       <h1>Two</h1> -->
+          <!--       <div class="well">2</div> -->
+          <!--     </div> -->
+          <!--     <div class="span4" style=""> -->
+          <!--       <h1>Three</h1> -->
+          <!--       <div class="well">3</div> -->
+          <!--     </div> -->
+          <!--   </div> -->
+          <!-- </div> -->
+
+          <div class="tab-pane" id="tab5">
+            <%= render partial: 'assets', object: assets, as: :questions %>
+          </div>
+          <div class="tab-pane" id="tab6">
+            <%= render partial: 'liabilities', object: liabilities, as: :questions %>
+          </div>
+          <div class="tab-pane" id="tab7">
+            <%= render partial: 'insurance', object: insurance, as: :questions %>
+          </div>
+          <div class="tab-pane" id="tab8">
+            <%= render partial: 'estimated_net_worth', object: settlor, as: :settlor %>
+          </div>
+
+          <ul class="pager wizard">
+            <li class="group pull-left" >
+              <ul>
+              <li class="first"><a href="#">First</a></li>
+              <li class="previous"><a href="#">Previous</a></li>
+              </ul>
+            </li>
+
+            <li class="group pull-right" >
+              <ul>
+              <li class="next"><a href="#">Next</a></li>
+              <li class="last"><a href="#">Last</a></li>
+              <li class="finish save" ><a href="#">Save</a></li>
+              </ul>
+            </li>
+          </ul>
+          
+        </div>	
+      </div>	
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#rootwizard').bootstrapWizard({
+
+        onShow: function(tab, navigation, index) {
+        }, 
+        
+        // All of these seem to also allow calls to 'onTabClick', so unless there is something
+        // particular to next, previous, first, last, there's no need to use them
+        //
+        // *************
+        //
+        onNext: function(tab, navigation, prev_index, index) {
+          var save_successful = save_data(tab, navigation, prev_index, index);
+          return (save_successful);
+
+        }, onPrevious: function(tab, navigation, prev_index, index) {
+          var save_successful = save_data(tab, navigation, prev_index, index);
+          return (save_successful);
+
+        }, onFirst: function(tab, navigation, prev_index, index) {
+          var save_successful = save_data(tab, navigation, prev_index, index);
+          return (save_successful);
+
+        }, onLast: function(tab, navigation, prev_index, index) {
+          var save_successful = save_data(tab, navigation, prev_index, index);
+          return (save_successful);
+        },
+
+        onTabClick: function(tab, navigation, prev_index, index) {
+          var save_successful = save_data(tab, navigation, prev_index, index);
+          return (save_successful);
+        }, 
+        
+        // onTabLoad: function(tab, navigation, index) {
+        //   console.log("ajax load content: " + $(tab).find(".remote-source").attr("href"));
+        // }, 
+        
+        onTabShow: function(tab, navigation, prev_index, index) {
+          load_data(tab, navigation, prev_index, index, function(){
+            initialize_content(tab, navigation, prev_index, index);
+          });
+        }
+      });
+
+      $('#rootwizard .finish').click(function() {
+        alert('Finished!, Starting over!');
+        $('#rootwizard').find("a[href*='tab1']").trigger('click');
+      });
+
+      $(".accordion-toggle").click(function(){
+        $(".collapse.in").collapse("hide");
+      });
+
+    });
+
+    function load_data(tab, navigation, prev_index, index, initialize_func){
+      //dcv;001 console.log("load content: " + $(tab).find(".remote-source").attr("href"));
+      // use ajax, if requested
+      if($(tab).find(".remote-source").length > 0){
+
+        // then initialize when done; place inside ajax block when using ajax
+        initialize_func(tab, navigation, prev_index, index);
+      }
+    }
+
+    function save_data(tab, navigation, prev_index, index){
+      //dcv;001 console.log("save content: " + $(tab).find(".remote-source").attr("href") + ", prev: " + prev_index + ", curr: " + index);
+      // use ajax, if requested
+      if($(tab).find(".remote-source").length > 0){
+
+        // due to the nature of asynchronous calls, when using ajax, it will be necessary to
+        // populate the wizard page and advance the progress bar manually
+
+        // $('#rootwizard').data("bootstrapWizard").gotoTab(tab);
+        // return false;
+      }
+      // otherwise, everything is kept static and should be saved at the very end of the wizard
+      // instead of being saved along the way
+
+      return ( validate_content(tab, navigation, prev_index, index) );
+    }
+
+    function validate_content(tab, navigation, prev_index, index){
+      // if(prev_index==1) {
+      // // Make sure we entered the name
+      // if(!$('#name').val()) {
+      //   alert('You must enter your name');
+      //   $('#name').focus();
+      //   return false;
+      //   }
+      // } else {
+      // // Set the name for the next tab
+      // $('#tab3').html('Hello, ' + $('#name').val());
+      // }
+
+      return true;
+    }
+
+
+    function process_settlor_joint_children_with_spouse(){
+      if($("#settlor_joint_children_with_spouse").is(":checked")){
+        $(".wiz-spouse-children").addClass("disabled");
+      }
+      else {
+        if($("#settlor_marital_status_single").is(":not(:checked)")){
+          $(".wiz-spouse-children").removeClass("disabled");
+        }
+      }
+    }
+    
+
+    function process_marital_status(){
+      if($("#settlor_marital_status_single").is(":checked")){
+        $(".wiz-spouse").addClass("disabled");
+        $(".wiz-spouse-children").addClass("disabled");
+        $('#settlor_joint_children_with_spouse').attr('disabled', 'disabled');
+      }
+      else {
+        $(".wiz-spouse").removeClass("disabled");
+        $('#settlor_joint_children_with_spouse').removeAttr('disabled');
+
+        if($("#settlor_joint_children_with_spouse").is(":not(:checked)")){
+          $(".wiz-spouse-children").removeClass("disabled");
+        }
+      }
+    }
+
+    function Disablers(){
+    }
+    new Disablers();
+    Disablers.procedures = {
+      process_marital_status: process_marital_status, 
+      process_settlor_joint_children_with_spouse: process_settlor_joint_children_with_spouse, 
+      xxx: function(){}
+    }
+    Disablers.prototype.process = function(proc){
+      var run_all = true;
+
+      // for(prop in Disablers.procedures){
+      //   if(run_all || (proc != prop)){
+      //     console.log(">2> procedure: " + prop);
+      //     Disablers.procedures[prop]();
+      //   }
+      // }
+
+      if(arguments.length > 0){
+        run_all = false;
+        //console.log(">1> procedure: " + proc);
+        Disablers.procedures[proc]();
+      } else {
+        for(prop in Disablers.procedures){
+          //console.log(">2> procedure: " + prop);
+          Disablers.procedures[prop]();
+        }
+      }
+      
+    }
+    var disablers = new Disablers();
+
+    function reg_events(){
+      $("#settlor_marital_status_married").click(function(){
+        disablers.process("process_marital_status");
+      });
+      $("#settlor_marital_status_single").click(function(){
+        disablers.process("process_marital_status");
+      });
+
+      $("#settlor_joint_children_with_spouse").click(function(){
+        disablers.process("process_settlor_joint_children_with_spouse");
+      });
+    }
+
+    function initialize_content(tab, navigation, prev_index, index){
+      //dcv;001 console.log("initialize content: " + $(tab).find(".remote-source").attr("href"));
+
+      var $total = navigation.find('li').length;
+      var $current = prev_index+1;
+      var $percent = ($current/$total) * 100;
+      $('#rootwizard').find('.bar').css({width:$percent+'%'});
+
+    	// If it's the last tab then hide the last button and show the finish instead
+      if($current >= $total) {
+        $('#rootwizard').find('.pager .next').addClass("disabled");
+        $('#rootwizard').find('.pager .finish').removeClass("disabled");
+        $('#rootwizard').find('.pager .last').addClass("disabled");
+      } else {
+        $('#rootwizard').find('.pager .next').removeClass("disabled");
+        $('#rootwizard').find('.pager .last').removeClass("disabled");
+        $('#rootwizard').find('.pager .finish').addClass("disabled");
+      }
+
+      if($('#rootwizard .pager .previous').hasClass("disabled")){
+        $('#rootwizard .pager .first').addClass("disabled");
+      } else {
+        $('#rootwizard .pager .first').removeClass("disabled");
+      }
+
+      disablers.process();
+
+      if(index == 4){
+        toggle_notes();
+      }
+    }
+
+    $(document).ready(function(){
+      reg_events();
+
+      var currentYear = new Date().getFullYear();
+
+      $( "#child_born_at" ).datepicker({
+        yearRange: String(currentYear-150)+":"+String(currentYear),
+        changeMonth: true,
+        changeYear: true
+      });
+    });
+    
+</script>
+
+

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @simple_value.value %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @simple_value.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_simple_value_path(@simple_value) %> |
+<%= link_to 'Back', simple_values_path %>

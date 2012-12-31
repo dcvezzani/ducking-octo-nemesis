@@ -1,0 +1,2 @@
+class Dependent < Person
+end

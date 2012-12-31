@@ -1,0 +1,2 @@
+class Spouse < Dependent
+end

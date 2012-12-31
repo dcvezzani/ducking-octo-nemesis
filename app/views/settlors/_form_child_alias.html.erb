@@ -1,0 +1,54 @@
+  <tr>
+    <td>
+      <div class="record-value"><%= child.full_legal_name %></div>
+      <div style="display: none; " class="edit-control"><%= text_field :asdf, :asdf, value: child.full_legal_name %></div>
+    </td>
+    <td>
+      <div class="record-value"><%= child.born_at %></div>
+      <div style="display: none; " class="edit-control"><%= text_field :asdf, :asdf, value: child.born_at %></div>
+    </td>
+    <td>
+      <div class="record-value"><%= child.alive %></div>
+      <div style="display: none; " class="edit-control"><%= text_field :asdf, :asdf, value: child.alive %></div>
+    </td>
+    <td>
+      <div class="record-value"><%= child.has_special_needs %></div>
+      <div style="display: none; " class="edit-control"><%= text_field :asdf, :asdf, value: child.has_special_needs %></div>
+    </td>
+
+    <td>
+    <div class="xcontrol-group">
+      <!-- <a class="action pull-right" title="Add child"><i class="icon-plus"></i></a> -->
+      <div class="btn-group btn-group-default pull-right">
+        <!-- <= link_to settlor_alias, class:"btn" do > -->
+        <!--   <i class="icon-search"></i> Show -->
+        <!-- < end > -->
+        <%= link_to js_void, class:"btn btn-edit", title: "Edit" do %>
+          <i class="icon-pencil"></i> <div style="display: none; ">Edit</div>
+        <% end %>
+        <%= link_to settlor_alias, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-delete", title: "Destroy" do %>
+          <i class="icon-trash"></i> <div style="display: none; ">Destroy</div>
+        <% end %>
+      </div>
+
+      <div class="btn-group btn-group-edit pull-right" style="display: none; ">
+        <!-- <= link_to settlor_alias, class:"btn" do > -->
+        <!--   <i class="icon-search"></i> Show -->
+        <!-- < end > -->
+        <%= link_to settlor_alias, method: :put, class:"btn btn-save btn-update", title: "Save" do %>
+          <i class="icon-thumbs-up"></i> <div style="display: none; ">Save</div>
+        <% end %>
+        <%= link_to js_void, class:"btn btn-cancel", title: "Cancel" do %>
+          <i class="icon-thumbs-down"></i> <div style="display: none; ">Cancel</div>
+        <% end %>
+        <%= link_to settlor_alias, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-delete", title: "Destroy" do %>
+          <i class="icon-trash"></i> <div style="display: none; ">Destroy</div>
+        <% end %>
+      </div>
+    </div>
+    </td>
+    
+    <!-- <td><= link_to 'Show', settlor ></td> -->
+    <!-- <td><= link_to 'Edit', edit_settlor_path(settlor) ></td> -->
+    <!-- <td><= link_to 'Destroy', settlor, method: :delete, data: { confirm: 'Are you sure?' } ></td> -->
+  </tr>

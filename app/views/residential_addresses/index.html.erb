@@ -1,0 +1,31 @@
+<h1>Listing residential_addresses</h1>
+
+<table>
+  <tr>
+    <th>Address 01</th>
+    <th>Address 02</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @residential_addresses.each do |residential_address| %>
+  <tr>
+    <td><%= residential_address.address_01 %></td>
+    <td><%= residential_address.address_02 %></td>
+    <td><%= residential_address.city %></td>
+    <td><%= residential_address.state %></td>
+    <td><%= residential_address.zip %></td>
+    <td><%= link_to 'Show', residential_address %></td>
+    <td><%= link_to 'Edit', edit_residential_address_path(residential_address) %></td>
+    <td><%= link_to 'Destroy', residential_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Residential address', new_residential_address_path %>

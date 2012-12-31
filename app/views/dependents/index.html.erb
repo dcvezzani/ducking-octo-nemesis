@@ -1,0 +1,33 @@
+<h1>Listing dependents</h1>
+
+<table>
+  <tr>
+    <th>Full legal name</th>
+    <th>Born at</th>
+    <th>Us citizen</th>
+    <th>Marital status</th>
+    <th>Alive</th>
+    <th>Has special needs</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dependents.each do |dependent| %>
+  <tr>
+    <td><%= dependent.full_legal_name %></td>
+    <td><%= dependent.born_at %></td>
+    <td><%= dependent.us_citizen %></td>
+    <td><%= dependent.marital_status %></td>
+    <td><%= dependent.alive %></td>
+    <td><%= dependent.has_special_needs %></td>
+    <td><%= link_to 'Show', dependent %></td>
+    <td><%= link_to 'Edit', edit_dependent_path(dependent) %></td>
+    <td><%= link_to 'Destroy', dependent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dependent', new_dependent_path %>

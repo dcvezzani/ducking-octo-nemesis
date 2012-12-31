@@ -1,0 +1,50 @@
+<%= form_for(settlor, html: {class: "form-horizontal"}) do |f| %>
+  <% if settlor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(settlor.errors.count, "error") %> prohibited this settlor from being saved:</h2>
+
+      <ul>
+      <% settlor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="title-control">
+    <h4 class="control-group">Aliases <small>- other names you have gone by</small></h4>
+
+    <div class="table-actions control-group">
+      <!-- <a class="action pull-right" title="Add child"><i class="icon-plus"></i></a> -->
+      <div class="btn-group pull-right">
+        <button class="btn btn-add-alias"><i class="icon-plus"></i> Add alias</button>
+        <!-- <button class="btn">2</button> -->
+        <!-- <button class="btn">3</button> -->
+      </div>
+    </div>
+  </div>
+
+<table class="table aliases table-striped table-bordered">
+  <tr>
+    <th>Alias</th>
+    <th></th>
+    <!-- <th class=""> <a class="action" title="Show child"><i class="icon-search"></i></a> </th> -->
+    <!-- <th class=""> <a class="action" title="Edit child"><i class="icon-pencil"></i></a> </th> -->
+    <!-- <th class=""> <a class="action" title="Delete child"><i class="icon-trash"></i></a> </th> -->
+  </tr>
+
+  <%# settlor.aliases.each do |settlor_alias| %>
+  <% aliases.each.with_index do |settlor_alias, i| %>
+    <%= render partial: 'form_settlor_alias', object: settlor_alias, as: :settlor_alias, locals: {f: f, index: i} %>
+  <% end %>
+</table>
+
+<table style="display: none; " class="template-new-alias">
+    <%= render partial: 'form_settlor_alias_new', object: Alias.new, as: :settlor_alias, locals: {f: f, index: "xxx"} %>
+</table>
+
+  <div class="control-group">
+    <%#= f.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>
+

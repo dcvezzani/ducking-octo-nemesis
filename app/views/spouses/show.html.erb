@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Full legal name:</b>
+  <%= @spouse.full_legal_name %>
+</p>
+
+<p>
+  <b>Born at:</b>
+  <%= @spouse.born_at %>
+</p>
+
+<p>
+  <b>Us citizen:</b>
+  <%= @spouse.us_citizen %>
+</p>
+
+<p>
+  <b>Marital status:</b>
+  <%= @spouse.marital_status %>
+</p>
+
+<p>
+  <b>Alive:</b>
+  <%= @spouse.alive %>
+</p>
+
+<p>
+  <b>Has special needs:</b>
+  <%= @spouse.has_special_needs %>
+</p>
+
+
+<%= link_to 'Edit', edit_spouse_path(@spouse) %> |
+<%= link_to 'Back', spouses_path %>

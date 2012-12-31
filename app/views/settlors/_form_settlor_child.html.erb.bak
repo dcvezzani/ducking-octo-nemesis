@@ -1,0 +1,10 @@
+  <tr>
+    <td><%= f.text_field :full_legal_name, placeholder: "Full legal name" %></td>
+    <td><%= f.text_field :born_at, placeholder: "Select date of birth" %></td>
+    <td><%= f.check_box :alive %></td>
+    <td><%= f.check_box :has_special_needs %></td>
+    <td><%#= link_to 'Show', child %></td>
+    <td><%#= link_to 'Edit', edit_child_path(child) %></td>
+    <td><%#= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+

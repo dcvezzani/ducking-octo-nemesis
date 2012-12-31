@@ -1,0 +1,146 @@
+<%= form_for(settlor, html: {class: "form-horizontal"}) do |f| %>
+  <% if settlor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(settlor.errors.count, "error") %> prohibited this settlor from being saved:</h2>
+
+      <ul>
+      <% settlor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h4 class="control-group">Basic information</h4>
+
+  <div class="control-group">
+    <%= f.label :full_legal_name, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :full_legal_name, placeholder: "Full legal name" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :born_at, "DOB", class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :born_at, placeholder: "Select date of birth" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <p class="control-label">US citizen?</p>
+    <div class="controls">
+      <%= f.label :us_citizen_true, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :us_citizen, true %>
+        Yes
+      <% end %>
+      <%= f.label :us_citizen_false, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :us_citizen, false %>
+        No
+      <% end %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <p class="control-label">Marital status?</p>
+    <div class="controls">
+      <%= f.label :marital_status_married, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :marital_status, :married %>
+        Married
+      <% end %>
+      <%= f.label :marital_status_single, nil, class: "radio", class: "radio inline" do %>
+        <%= f.radio_button :marital_status, :single %>
+        Single
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section-group residential-address">
+    <h4 class="control-group">Residential address</h4>
+    <div class="control-group">
+      <%= label :residential, :address_01, class: "control-label" %>
+      <div class="controls">
+        <%= text_field :residential, :address_01, placeholder: "Street address where you live" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label :residential, :address_02, class: "control-label" %>
+      <div class="controls">
+        <%= text_field :residential, :address_02, placeholder: "Secondary address" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label :residential, :city, class: "control-label" %>
+      <div class="controls">
+        <%= text_field :residential, :city, placeholder: "City" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label :residential, :state, class: "control-label" %>
+      <div class="controls">
+        <%= text_field :residential, :state, placeholder: "CA", disabled: true %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label :residential, :zip, class: "control-label" %>
+      <div class="controls">
+        <%= text_field :residential, :zip, placeholder: "Zip code" %>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section-group mailing-address">
+    <h4 class="control-group">Mailing address</h4>
+
+    <div class="control-group">
+    <%= label :residential, :use_for_mailing_address, nil, class: "checkbox", class: "checkbox inline address-logic" do %>
+      <%= check_box :residential, :use_for_mailing_address %>
+      Same as residential address
+    <% end %>
+    </div>
+
+    <div class="address-fields mailing-address-fields">
+      <div class="control-group">
+        <%= label :mailing, :address_01, class: "control-label" %>
+        <div class="controls">
+          <%= text_field :mailing, :address_01, placeholder: "Where you receive mail" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label :mailing, :address_02, class: "control-label" %>
+        <div class="controls">
+          <%= text_field :mailing, :address_02, placeholder: "Secondary address" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label :mailing, :city, class: "control-label" %>
+        <div class="controls">
+          <%= text_field :mailing, :city, placeholder: "City" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label :mailing, :state, class: "control-label" %>
+        <div class="controls">
+          <%= text_field :mailing, :state, placeholder: "CA", disabled: true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label :mailing, :zip, class: "control-label" %>
+        <div class="controls">
+          <%= text_field :mailing, :zip, placeholder: "Zip code" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="control-group">
+    <%#= f.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>
+

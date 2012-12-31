@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Full legal name:</b>
+  <%= @child.full_legal_name %>
+</p>
+
+<p>
+  <b>Born at:</b>
+  <%= @child.born_at %>
+</p>
+
+<p>
+  <b>Alive:</b>
+  <%= @child.alive %>
+</p>
+
+<p>
+  <b>Has special needs:</b>
+  <%= @child.has_special_needs %>
+</p>
+
+
+<%= link_to 'Edit', edit_child_path(@child) %> |
+<%= link_to 'Back', children_path %>

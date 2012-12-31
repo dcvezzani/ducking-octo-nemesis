@@ -1,0 +1,19 @@
+0000000000000000000000000000000000000000 a44aec213b2592902749c8b7327a7e18a1deac3e David Vezzani <david_vezzani@yahoo.com> 1356582506 -0800	clone: from /Users/davidvezzani/rails-app/clean-start
+a44aec213b2592902749c8b7327a7e18a1deac3e 8e1a8e01bc0d70b56e9d1151d0d650a2bb0062e4 David Vezzani <david_vezzani@yahoo.com> 1356716035 -0800	commit: adds wizard and pdf generation
+8e1a8e01bc0d70b56e9d1151d0d650a2bb0062e4 4c32bddd326293917569a34c939da79a65f29ccc David Vezzani <david_vezzani@yahoo.com> 1356724753 -0800	commit: updates db:truncate to persist the table of questions since they won't be changing very much
+4c32bddd326293917569a34c939da79a65f29ccc f7837dbb8b4bf3e86e6ba9880bbac892f62df822 David Vezzani <david_vezzani@yahoo.com> 1356724789 -0800	commit: fixes js error with disabling wizard steps and formatting issue with pager buttons
+f7837dbb8b4bf3e86e6ba9880bbac892f62df822 f9200f260694aedc51fb54d1c4d9a4230575592d David Vezzani <david_vezzani@yahoo.com> 1356726330 -0800	commit: applies tabular format for managing clients (settlors)
+f9200f260694aedc51fb54d1c4d9a4230575592d f064b59c3c55c0b8ede9a5b8392840d2a5ee4b3d David Vezzani <david_vezzani@yahoo.com> 1356738954 -0800	commit: getting sequential indexes now takes into account disabled items
+f064b59c3c55c0b8ede9a5b8392840d2a5ee4b3d 7403f00510e559e82894b82bda588859a6f55a3d David Vezzani <david_vezzani@yahoo.com> 1356746934 -0800	commit: adds smoke-in-mirror functinality for aliases; need to hook this up to the database
+7403f00510e559e82894b82bda588859a6f55a3d 84ee19e9baa26e5d4054b9ef8ec6958910eb690f David Vezzani <david_vezzani@yahoo.com> 1356769137 -0800	commit: applies clf banner; still bugged about the glow that should be centered behind the text
+84ee19e9baa26e5d4054b9ef8ec6958910eb690f c9af8a70b4c4481241f2ed6d3a320edcbdb02e05 David Vezzani <david_vezzani@yahoo.com> 1356774134 -0800	commit: adds goldenrod color to menu bar
+c9af8a70b4c4481241f2ed6d3a320edcbdb02e05 4de99d7796a24745d01e3bcca861f64ca070fc39 David Vezzani <david_vezzani@yahoo.com> 1356793254 -0800	commit: updates display logic with javascript
+4de99d7796a24745d01e3bcca861f64ca070fc39 cb9f0bad8537e391c9e808c74fa5651db4209116 David Vezzani <david_vezzani@yahoo.com> 1356795090 -0800	commit: adds estimated net worth
+cb9f0bad8537e391c9e808c74fa5651db4209116 106cf7378a2bae25b218a0dd7fa0fcf2ac93e755 David Vezzani <david_vezzani@yahoo.com> 1356816313 -0800	commit: start linking to database
+106cf7378a2bae25b218a0dd7fa0fcf2ac93e755 106cf7378a2bae25b218a0dd7fa0fcf2ac93e755 David Vezzani <david_vezzani@yahoo.com> 1356836076 -0800	checkout: moving from master to current
+106cf7378a2bae25b218a0dd7fa0fcf2ac93e755 22d54e631d8b7fead8855232e01e5c0084398172 David Vezzani <david_vezzani@yahoo.com> 1356836088 -0800	commit: work in progress
+22d54e631d8b7fead8855232e01e5c0084398172 106cf7378a2bae25b218a0dd7fa0fcf2ac93e755 David Vezzani <david_vezzani@yahoo.com> 1356836092 -0800	checkout: moving from current to master
+106cf7378a2bae25b218a0dd7fa0fcf2ac93e755 22d54e631d8b7fead8855232e01e5c0084398172 David Vezzani <david_vezzani@yahoo.com> 1356836409 -0800	checkout: moving from master to current
+22d54e631d8b7fead8855232e01e5c0084398172 70560d192f797a74d04530a7b5f8dea5b2407dce David Vezzani <david_vezzani@yahoo.com> 1356848983 -0800	commit: roughly working; still plenty to do
+70560d192f797a74d04530a7b5f8dea5b2407dce 301678869bc748638a872c25f8fd8bd7f0f91146 David Vezzani <david_vezzani@yahoo.com> 1356972218 -0800	commit: settlor page is somewhat stable now
+301678869bc748638a872c25f8fd8bd7f0f91146 106cf7378a2bae25b218a0dd7fa0fcf2ac93e755 David Vezzani <david_vezzani@yahoo.com> 1356973328 -0800	checkout: moving from current to master

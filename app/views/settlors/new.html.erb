@@ -1,0 +1,9 @@
+<div class="page-header">
+<h1>New client<small></small></h1>
+</div>
+
+<%#= render partial: 'client_wizard', object: @settlor, as: :settlor %>
+<%= render partial: 'client_wizard', locals: {settlor: @settlor, spouse: @spouse, child: @child, considerations: @considerations, assets: @assets, liabilities: @liabilities, insurance: @insurance, aliases: @aliases} %>
+
+<%#= link_to 'Back', settlors_path %>
+

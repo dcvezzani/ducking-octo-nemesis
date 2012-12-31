@@ -1,0 +1,75 @@
+<div class="page-header">
+<h1>Client's children <small></small></h1>
+</div>
+
+<%= form_for(child, html: {class: "form-horizontal"}) do |f| %>
+  <% if child.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(child.errors.count, "error") %> prohibited this settlor from being saved:</h2>
+
+      <ul>
+      <% child.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <!-- <a class="action pull-right" title="Add child"><i class="icon-plus"></i></a> -->
+    <div class="btn-group pull-right">
+      <button class="btn btn-add-child"><i class="icon-plus"></i> Add child</button>
+      <!-- <button class="btn">2</button> -->
+      <!-- <button class="btn">3</button> -->
+    </div>
+  </div>
+
+<table class="table children table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Full legal name</th>
+      <th>DOB</th>
+      <th>Living?</th>
+      <th>Special needs?</th>
+      <th></th>
+      <!-- <th class=""><a class="action" title="Show child"><i class="icon-search"></i></a></th> -->
+      <!-- <th class=""><a class="action" title="Edit child"><i class="icon-pencil"></i></a></th> -->
+      <!-- <th class=""><a class="action" title="Delete child"><i class="icon-trash"></i></a></th> -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% [child].each.with_index do |c, i| %>
+      <%= render partial: 'form_settlor_child', object: c, as: :child, locals: {f: f, index: i} %>
+    <% end %>
+  </tbody>
+</table>
+
+<table style="display: none; " class="template-new-child">
+  <tbody>
+    <%= render partial: 'form_settlor_child_new', object: Child.new, as: :child, locals: {f: f, index: "xxx"} %>
+  </tbody>
+</table>
+
+
+  <%= label :settlor, :joint_children_with_spouse, nil, class: "checkbox", class: "checkbox inline" do %>
+    <%= check_box :settlor, :joint_children_with_spouse %>
+    Children the same for spouse?
+  <% end %>
+
+  <div class="control-group">
+    <%#= f.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    var currentYear = new Date().getFullYear();
+
+    $( "#settlor_born_at" ).datepicker({
+      yearRange: String(currentYear-150)+":"+String(currentYear),
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+</script>

@@ -1,0 +1,2 @@
+module DependentRelationshipsHelper
+end

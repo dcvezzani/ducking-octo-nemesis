@@ -1,0 +1,25 @@
+<h1>Listing dependent_relationships</h1>
+
+<table>
+  <tr>
+    <th>Parent</th>
+    <th>Dependent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dependent_relationships.each do |dependent_relationship| %>
+  <tr>
+    <td><%= dependent_relationship.parent_id %></td>
+    <td><%= dependent_relationship.dependent_id %></td>
+    <td><%= link_to 'Show', dependent_relationship %></td>
+    <td><%= link_to 'Edit', edit_dependent_relationship_path(dependent_relationship) %></td>
+    <td><%= link_to 'Destroy', dependent_relationship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dependent relationship', new_dependent_relationship_path %>
